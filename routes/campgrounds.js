@@ -25,7 +25,7 @@ router.get("/new", isLoggedIn, function(req, res) {
 router.post("/", isLoggedIn, function(req, res){
     //get data from form and add to array
     var name = req.body.name;
-    var image = req.body.image;
+    var image = "/uploads/" + req.file;
     var info = req.body.info;
     var author = {
         id: req.user.id,
