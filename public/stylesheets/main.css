@@ -1,3 +1,7 @@
+.navbar .navbar-default .container-fluid {
+	background-color: #000;
+}
+
 .thumbnail img {
     width: 100%;
 }
@@ -6,6 +10,22 @@
     padding: 0;
 }
 
-body {
-    background-color: #000;
+/*REGISTER*/
+.signup {
+	text-align: center;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.signup img{
+	width: 150px;
+}
+
+
+input[type=file] {
+	margin: 0 auto;
+}
+
+label {
+	float: left;
 }

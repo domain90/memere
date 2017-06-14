@@ -11,16 +11,20 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var User = require("./models/user");
 var exsession = require("express-session");
 
+
 //Require Routes
 var campgroundsRoutes = require("./routes/campgrounds.js");
 var commentsRoutes = require("./routes/comments.js");
-var indexRoutes = require("./routes/index.js");
+var authenticateRoutes = require("./routes/authenticate.js");
 
 mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 // seeddb();
+
+
+
 
 //passport configuration
 app.use(exsession({
@@ -41,8 +45,8 @@ app.use(function(req, res, next){
     next();
 })
 
-app.use(indexRoutes);
-app.use('/campgrounds', campgroundsRoutes);
+app.use(authenticateRoutes);
+app.use('/', campgroundsRoutes);
 app.use('/campgrounds/:id/comments', commentsRoutes);
 
 

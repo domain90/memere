@@ -2,14 +2,19 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var multer = require("multer");
 
-//==========================
-// ROUTES
-//==========================
-
-router.get("/", function(req, res){
-    res.render("landingpage");
+//upload config
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        callback(null, 'public/uploads/')
+    },
+    filename: function (req, file, cb) {
+        callback(null, file.originalname)
+  }
 });
+
+var upload = multer({ storage: storage });
 
 
 //=========================
@@ -21,7 +26,7 @@ router.get("/register",function(req, res) {
 })
 
 //Logic
-router.post("/register", function(req, res) {
+router.post("/register", upload.single('avatar'), function(req, res) {
     var newUser = new User({ username: req.body.username });
     User.register( newUser, req.body.password, function(err, user){ 
         if(err){
