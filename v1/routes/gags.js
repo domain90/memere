@@ -38,14 +38,14 @@ router.get("/new", isLoggedIn, function(req, res) {
 //CREATE
 router.post("/", isLoggedIn, upload.single('gag'), function(req, res){
     //get data from form and add to array
-    var name = req.body.name;
+    var title = req.body.title;
     var image = "/uploads/" + req.file.filename;
     var info = req.body.info;
     var author = {
         id: req.user.id,
         username: req.user.username
     }
-    var newCamp = {name: name, images: image, info: info, author: author};
+    var newCamp = {title: title, images: image, info: info, author: author};
     //Save to database
     Gag.create(newCamp, function(err, newlyCamp){
         if(err){

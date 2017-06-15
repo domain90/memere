@@ -1,5 +1,8 @@
-.navbar .navbar-default .container-fluid {
+.navbar > .container-fluid {
 	background-color: #000;
+}
+.navbar-default .navbar-nav> li > a {
+	color: #fff;
 }
 
 .thumbnail img {

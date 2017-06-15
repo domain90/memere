@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var gagSchema = new mongoose.Schema({
-    name: String,
+    title: String,
     image: String,
     info: {type: String, default: Date.now()},
     description: String,
