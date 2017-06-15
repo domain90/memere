@@ -10,6 +10,7 @@ var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var User = require("./models/user");
 var exsession = require("express-session");
+var Promise = require("bluebird");
 
 
 //Require Routes

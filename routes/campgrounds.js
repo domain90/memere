@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campgrounds.js");
+var Promise = require("bluebird");
 
 //INDEX
 router.get("/", function(req, res){

@@ -3,14 +3,16 @@ var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
 var multer = require("multer");
+var Promise = require("bluebird");
+var mkdirp = require("mkdirp");
 
 //upload config
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        callback(null, 'public/uploads/')
+        cb(null, 'public/uploads/')
     },
     filename: function (req, file, cb) {
-        callback(null, file.originalname)
+        cb(null, file.originalname)
   }
 });
 
@@ -26,16 +28,20 @@ router.get("/register",function(req, res) {
 })
 
 //Logic
-router.post("/register", upload.single('avatar'), function(req, res) {
-    var newUser = new User({ username: req.body.username });
+router.post("/register", upload.single('avatar'), function(req, res, next) {
+    var avatar = "/uploads/" + req.file.filename;
+    var newUser = new User({ username: req.body.username, avatar: avatar });
     User.register( newUser, req.body.password, function(err, user){ 
         if(err){
             console.log(err);
             return res.render("register");
+        } else {
+            passport.authenticate("local")(req, res, function(){
+            
+            res.redirect("/");
+            });
         }
-        passport.authenticate("local")(req, res, function(){
-            res.redirect("/campgrounds");
-        });
+       
     });
 });
 
@@ -46,7 +52,7 @@ router.get("/login", function(req, res) {
 
 router.post("/login", passport.authenticate("local", 
 {
-    successRedirect: "/campgrounds",
+    successRedirect: "/",
     failureRedirect: "/login"
 }) , function(req, res) {
     
@@ -55,7 +61,7 @@ router.post("/login", passport.authenticate("local",
 //LOGOUT
 router.get("/logout", function(req, res) {
     req.logout();
-    res.redirect("/campgrounds");
+    res.redirect("/");
 })
 
 //Middleware 
