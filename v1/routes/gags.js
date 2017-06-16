@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var router = express.Router();
-var Gag = require("../models/gags.js");
+var Gag = require("../models/gags");
 var mongoose = require("mongoose");
 mongoose.Promise = require('bluebird');
 var multer = require("multer");
