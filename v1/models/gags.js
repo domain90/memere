@@ -4,7 +4,6 @@ var gagSchema = new mongoose.Schema({
     title: String,
     image: String,
     info: {type: String, default: Date.now()},
-    description: String,
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,

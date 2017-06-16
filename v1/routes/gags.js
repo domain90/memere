@@ -47,7 +47,7 @@ router.post("/", upload.single('gag'), function(req, res){
         id: req.user.id,
         username: req.user.username
     }
-    var newGag = {title: title, images: image, info: info, author: author};
+    var newGag = {title: title, image: image, info: info, author: author};
     //Save to database
     Gag.create(newGag, function(err, newlyGag){
         if(err){
@@ -55,7 +55,7 @@ router.post("/", upload.single('gag'), function(req, res){
             console.log(err);
         } else {
             //redirect to index
-            console.log(image)
+            console.log(req.file)
             res.redirect("/");
         }
     })
