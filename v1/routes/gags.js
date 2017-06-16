@@ -1,4 +1,5 @@
 var express = require("express");
+var app = express();
 var router = express.Router();
 var Gag = require("../models/gags.js");
 var mongoose = require("mongoose");
@@ -35,8 +36,9 @@ router.get("/new", isLoggedIn, function(req, res) {
     res.render("gags/new");
 })
 
+app.use(isLoggedIn);
 //CREATE
-router.post("/", isLoggedIn, upload.single('gag'), function(req, res){
+router.post("/", upload.single('gag'), function(req, res){
     //get data from form and add to array
     var title = req.body.title;
     var image = "/uploads/" + req.file.filename;
@@ -45,15 +47,16 @@ router.post("/", isLoggedIn, upload.single('gag'), function(req, res){
         id: req.user.id,
         username: req.user.username
     }
-    var newCamp = {title: title, images: image, info: info, author: author};
+    var newGag = {title: title, images: image, info: info, author: author};
     //Save to database
-    Gag.create(newCamp, function(err, newlyCamp){
+    Gag.create(newGag, function(err, newlyGag){
         if(err){
             console.log("An error has occur");
             console.log(err);
         } else {
-            //redirect to campgrounds
-             res.redirect("/");
+            //redirect to index
+            console.log(image)
+            res.redirect("/");
         }
     })
     
@@ -61,7 +64,7 @@ router.post("/", isLoggedIn, upload.single('gag'), function(req, res){
 })
 
 //SHOW - displays more info about clicked/selected camp
-router.get("/:id", function(req, res) {
+router.get("/gag/:id", function(req, res) {
     //find campground with provided ID
     Gag.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
@@ -78,7 +81,6 @@ function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect("/login");
 }
 
 module.exports = router;
