@@ -3,8 +3,9 @@ var app = express();
 var router = express.Router();
 var Gag = require("../models/gags");
 var mongoose = require("mongoose");
-mongoose.Promise = require('bluebird');
 var multer = require("multer");
+mongoose.Promise = require('bluebird');
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {

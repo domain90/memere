@@ -1,48 +1,19 @@
 <% include ../partials/header %>
 
-
-<div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to YelpCamp!</h1>
-            <p>View all the campgrounds around the continent</p>
-            <p>
-                <a class="btn btn-primary btn-large" href="/gags/new">Add new campground</a>
-            </p>
-        </div>
-    </header>
-    
-   
-    
-   <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-       <% Gags.forEach(function(camps){ %>
-       <div class="col-md-3 col-sm-6">
-           <div class="thumbnail">
-               <img src="<%= camps["images"] %>">
-               <div class="caption">
-                    <h4><%= camps["name"] %></h4>  
-               </div>
-               <P>
-                   <a class="btn btn-primary" href="/gags/<%= camps["_id"] %>">More Info</a>
-               </P>
-           </div>
-       </div>
-       <% }) %>
-   </div>
-   
-
 <div class="container">
   <% Gags.forEach(function(gag){ %>
-  <div class="row justify-content-center">
-      <div class="col-4">
-          <div class="card card-block mb-2">
+  <div class="row">
+      <div class="col-sm-8 col-sm-offset-3">
+          <div class="card">
             <div class="head-title">
               <h3 class="gag-title"><%= gag["title"] %></h3>
             </div>
             <div class="content-img">
               <img src="<%= gag['image'] %>">
             </div>
-
+            <div class="cta">
+              
+            </div>
           </div>
       </div>
        <% }) %>
