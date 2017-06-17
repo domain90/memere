@@ -3,27 +3,33 @@
 <div class="container">
   <% Gags.forEach(function(gag){ %>
   <div class="row">
-      <div class="col-sm-8 col-sm-offset-3">
-          <div class="card">
-            <div class="head-title">
-              <h3 class="gag-title"><%= gag["title"] %></h3>
-            </div>
-            <div class="content-img">
-              <img src="<%= gag['image'] %>">
-            </div>
-            <div class="cta">
-              <div class="upvote btn btn-default">
-                <span class="glyphicon glyphicon-arrow-up">
-              </div>
-              <div class="upvote btn btn-default">
-                <span class="glyphicon glyphicon-arrow-down">
-              </div>
-              <div class="upvote btn btn-default">
-                <span class="glyphicon glyphicon-option-horizontal">
-              </div>
-            </div>
-          </div>
+    <div class="card">
+      <div class="head-title">
+        <h3 class="gag-title"><%= gag["title"] %></h3>
       </div>
+      <div class="content-img">
+        <img src="<%= gag['image'] %>">
+      </div>
+      <div class="cta">
+      <div class="left-floated">
+        <div class="upvote btn btn-default">
+          <span class="glyphicon glyphicon-arrow-up">
+        </div>
+        <div class="upvote btn btn-default">
+          <span class="glyphicon glyphicon-arrow-down">
+        </div>
+        <div class="upvote btn btn-default">
+          <span class="glyphicon glyphicon-option-horizontal">
+        </div>
+      </div>
+      <div class="right-floated">
+        <a href="#" title="Facebook" class="btn btn-facebook">
+          <i class="fa fa-facebook fa-fw"></i> Facebook
+        </a>
+      </div>
+        
+      </div>
+    </div>
   </div>
   <% }) %>
   

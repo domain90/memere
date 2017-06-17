@@ -5,14 +5,32 @@
 	color: #fff;
 }
 
-.thumbnail img {
-    width: 100%;
+/* INDEX */
+.card {
+	width: 600px;
+	margin: 0 auto;
 }
 
-.thumbnail {
-    padding: 0;
+.card .cta {
+	padding: 15px 0;
 }
 
+.card .cta .right-floated {
+	display: inline;
+	float: right;
+}
+.card .cta .left-floated {
+	display: inline;
+	float: left;
+}
+.content-img {
+	text-align: center;
+}
+.btn-facebook {
+  background: #3B5998;
+  border-radius: 0;
+  color: #fff;
+}
 /*REGISTER*/
 .signup {
 	text-align: center;
