@@ -8,7 +8,16 @@
         <h3 class="gag-title"><%= gag["title"] %></h3>
       </div>
       <div class="content-img">
-        <img src="<%= gag['image'] %>">
+        <a href="/gags/<%= gag['_id'] %>">
+          <img src="<%= gag['image'] %>">
+        </a>
+      </div>
+      <div class="meta">
+        <div class="meta-info">
+          <p class="left-floated"><%= gag["views"] %> Views</p>
+          -
+          <p class="left-floated"><%= gag["commentsNumber"] %> Comments</p>
+        </div>
       </div>
       <div class="cta">
       <div class="left-floated">

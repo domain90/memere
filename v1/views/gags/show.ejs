@@ -1,43 +1,60 @@
 <% include ../partials/header %>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <p class="lead">Yelpcamp</p>
-            <div class="list-group">
-                <li class="list-group-item">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
+        <div class="card">
+          <div class="head-title">
+            <h3 class="gag-title"><%= gag["title"] %></h3>
+          </div>
+          <div class="content-img">
+            <a href="/gags/<%= gag['_id'] %>">
+              <img src="<%= gag['image'] %>">
+            </a>
+          </div>
+          <div class="meta">
+            <div class="meta-info">
+              <p class="left-floated"><%= gag["views"] %> Views</p>
+              -
+              <p class="left-floated"><%= gag["commentsNumber"] %> Comments</p>
             </div>
+          </div>
+          <div class="cta">
+            <div class="left-floated">
+                <div class="upvote btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-up">
+                </div>
+                <div class="upvote btn btn-default">
+                  <span class="glyphicon glyphicon-arrow-down">
+                </div>
+                <div class="upvote btn btn-default">
+                  <span class="glyphicon glyphicon-option-horizontal">
+                </div>
+            </div>
+            <div class="right-floated">
+                <a href="#" title="Facebook" class="btn btn-facebook">
+                  <i class="fa fa-facebook fa-fw"></i> Facebook
+                </a>
+            </div>
+          </div>
         </div>
-        <div class="col-md-9">
-            <div class="thumbnail">
-                <img class="image-responsive" src="<%= campground.images %>">
-                <div class="caption-full">
-                    <h4 class="pull-right">$9.99/Night</h4>
-                    <h4><a><%= campground.name %></a></h4>
-                    <p><%= campground.description %></p>
-                    <p>
-                       <em> Submitted by <%= campground.author.username %> </em>
-                    </p>
-                </div>
+
+        <div class="well">
+            <div class="text-right">
+                <a class="btn btn-success"href="/campgrounds/<%= gag._id %>/comments/new">Add comment</a>
             </div>
-            <div class="well">
-                <div class="text-right">
-                    <a class="btn btn-success"href="/campgrounds/<%= campground._id %>/comments/new">Add comment</a>
-                </div>
-                <hr>
-                <% campground.comments.forEach(function(comment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong><%= comment.author.username %></strong>
-                            <span class="pull-right">10 days ago</span>
-                            <p><%= comment.text %></p>
-                             
-                        </div>
+            <hr>
+            <% gag.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%= comment.author.username %></strong>
+                        <span class="pull-right">10 days ago</span>
+                        <p><%= comment.text %></p>
+                         
                     </div>
-                <% }) %>
-            </div>
+                </div>
+            <% }) %>
         </div>
+        
       
     </div>
     

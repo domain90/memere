@@ -48,7 +48,9 @@ router.post("/", upload.single('gag'), function(req, res){
         id: req.user.id,
         username: req.user.username
     }
-    var newGag = {title: title, image: image, info: info, author: author};
+    var views = 1000;
+    var comments = 100;
+    var newGag = {title: title, image: image, info: info, author: author, views: views, commentsNumber: comments};
     //Save to database
     Gag.create(newGag, function(err, newlyGag){
         if(err){
@@ -65,14 +67,14 @@ router.post("/", upload.single('gag'), function(req, res){
 })
 
 //SHOW - displays more info about clicked/selected camp
-router.get("/gag/:id", function(req, res) {
+router.get("/gags/:id", function(req, res) {
     //find campground with provided ID
-    Gag.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
+    Gag.findById(req.params.id).populate("comments").exec(function(err, foundGag){
         if(err){
             console.log(err);
         } else {
             //show more info in a template
-            res.render("gags/show", {campground: foundCampground});
+            res.render("gags/show", {gag: foundGag});
         }
     })
 })

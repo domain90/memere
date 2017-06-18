@@ -15,8 +15,10 @@ var gagSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
-        }
-    ]
+        },
+    ],
+    views: Number,
+    commentsNumber: Number
 });
 
 module.exports = mongoose.model("Gag", gagSchema);
