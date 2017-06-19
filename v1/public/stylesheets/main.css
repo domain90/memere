@@ -10,6 +10,9 @@
 	width: 600px;
 	margin: 0 auto;
 }
+.card .cta {
+	overflow: hidden;
+}
 .card .cta .right-floated {
 	display: inline;
 	float: right;
@@ -50,4 +53,15 @@ input[type=file] {
 
 label {
 	float: left;
+}
+
+/* SHOW */
+.comments {
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 12px;
+}
+.comment-box .payload textarea {
+	width: 100%;
 }
