@@ -40,20 +40,27 @@
 
         <div class="comments">
             <div class="comment-box">
-                <div class="avatar"></div>
                 <div class="payload">
-                    <textarea name="new-comment" rows="5" class="comment-input"></textarea>
+                <div class="comment-user-container">
+                <% if(!currentUser) { %>
+                    <img src="/default_avatar.png" alt="" class="user_avatar">
+                <% } else { %>
+                    <img src="<%= currentUser.avatar %>" alt="" class="user_avatar">
+                <% } %>
+                </div>
+                <div class="comment-input-area">
+                     <textarea name="new-comment" rows="5" class="comment-input"></textarea>
+                </div>
                 </div>
             </div>
             <div class="text-right">
-                <a class="btn btn-success"href="/campgrounds/<%= gag._id %>/comments/new">Add comment</a>
+                <a class="btn btn-success"href="/gags/<%= gag._id %>/comments/new">Add comment</a>
             </div>
-            <hr>
+            
             <% gag.comments.forEach(function(comment){ %>
                 <div class="row">
                     <div class="col-md-12">
                         <strong><%= comment.author.username %></strong>
-                        <span class="pull-right">10 days ago</span>
                         <p><%= comment.text %></p>
                          
                     </div>
