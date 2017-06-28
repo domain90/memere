@@ -87,3 +87,6 @@ label {
 	width: 100%;
 	resize: none;
 }
+.comment-main {
+	line-height: 2;
+}

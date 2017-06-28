@@ -8,9 +8,10 @@ var commentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        username: String
+        username: String,
+        avatar: String
     },
-    votes: Number
+    votes: {type: Number, default: 1}
 
 });
 
