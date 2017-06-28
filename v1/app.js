@@ -48,7 +48,7 @@ app.use(function(req, res, next){
 
 app.use(authenticateRoutes);
 app.use('/', gagsRoutes);
-app.use('/gags/:id/comments', commentsRoutes);
+app.use(commentsRoutes);
 
 
 
