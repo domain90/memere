@@ -62,16 +62,21 @@
             
           <% gag.comments.forEach(function(comment){ %>
           <div class="row comments-row">
-            <div class="payload col-md-12">
+            <div class="comment-payload col-md-12">
               <div class="comment-user-container">
                 <img src="<%= comment.author.avatar %>" alt="" class="user_avatar">
               </div>
               <div class="comment-input-area">
                 <div class="comment-meta">
                   <strong><%= comment.author.username %></strong>
-                  <span><%= comment.votes %></span>
+                  <span class="gag-votes"><%= comment.votes %> Votes</span>
                 </div>
                 <p class="comment-main"><%= comment.text %></p>
+                <div class="comment-cta">
+                  <a href="" class="comment-reply-link">Reply</a>
+                  <a href=""><span class="glyphicon glyphicon-arrow-up"></a>
+                  <a href=""><span class="glyphicon glyphicon-arrow-down"></a>
+                </div>
               </div>
             </div>
           </div>

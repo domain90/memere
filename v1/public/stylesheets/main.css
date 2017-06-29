@@ -67,11 +67,17 @@ label {
 }
 
 /* SHOW */
+.payload .user_avatar {
+	width: 50px;
+}
+.comment-payload {
+	margin-bottom: 15px;
+}
 .comment-user-container {
 	display: inline-block;
 	float: left;
 }
-.payload .user_avatar {
+.comment-payload .user_avatar {
 	width: 50px;
 }
 .comment-input-area {
@@ -89,4 +95,17 @@ label {
 }
 .comment-main {
 	line-height: 2;
+	margin-bottom: 0;
+}
+.gag-votes {
+	font-size: 12px;
+	padding-left: 5px;
+}
+.comment-cta a{
+	font-size: 13px;
+	font-weight: 700;
+	color: #808080;
+}
+.comment-reply-link {
+	padding-right: 5px;
 }
