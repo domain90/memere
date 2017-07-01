@@ -89,7 +89,7 @@ label {
 	margin-top: 20px;
 	padding: 12px;
 }
-.comment-box .payload textarea {
+.payload textarea {
 	width: 100%;
 	resize: none;
 }

@@ -48,8 +48,6 @@ router.post("/", upload.single('gag'), function(req, res){
         id: req.user.id,
         username: req.user.username
     }
-    var views = 1;
-    var comments = 0;
     var newGag = {title: title, image: image, info: info, author: author, views: views, commentsNumber: comments};
     //Save to database
     Gag.create(newGag, function(err, newlyGag){

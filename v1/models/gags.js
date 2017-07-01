@@ -17,8 +17,8 @@ var gagSchema = new mongoose.Schema({
             ref: "Comment"
         },
     ],
-    views: Number,
-    commentsNumber: Number
+    views: {type: Number, default: 1},
+    commentsNumber:{type: Number, default: 0}
 });
 
 module.exports = mongoose.model("Gag", gagSchema);
