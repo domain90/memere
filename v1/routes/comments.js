@@ -37,12 +37,12 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
                 gag.save()
                 //Redirect
                 res.redirect('/gags/' + gag._id)
-                console.log("It's saved")
             }
           })
         }
      })
 })
+
 
 //Middleware 
 function isLoggedIn(req, res, next) {
