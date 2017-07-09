@@ -42,13 +42,18 @@ app.use(isLoggedIn);
 router.post("/", upload.single('gag'), function(req, res){
     //get data from form and add to array
     var title = req.body.title;
-    var image = "/uploads/" + req.file.filename;
+    var image = "";
+    if(!req.file){
+        var image = req.body.url
+    } else {
+        var image = "/uploads/" + req.file.filename;
+    }
     var info = req.body.info;
     var author = {
         id: req.user.id,
         username: req.user.username
     }
-    var newGag = {title: title, image: image, info: info, author: author, views: views, commentsNumber: comments};
+    var newGag = {title: title, image: image, info: info, author: author};
     //Save to database
     Gag.create(newGag, function(err, newlyGag){
         if(err){

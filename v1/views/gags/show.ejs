@@ -51,7 +51,7 @@
             </div>
             <form method="POST" action="/gags/<%= gag._id %>">
               <div class="comment-input-area">
-                <textarea name="comment[text]" rows="4" class="comment-input"></textarea>
+                <textarea name="comment[text]" rows="4" class="comment-input" id="comment-text"></textarea>
               </div>
               <div class="text-right">
                 <button class="btn btn-success commentSubmit" type="submit" value="Submit">Add Comment</button>
@@ -60,40 +60,31 @@
           </div>
         </div>
         
-          
-        <% gag.comments.forEach(function(comment){ %>
-        <div class="row comments-row">
-          <div class="comment-payload col-md-12" data-comment-id="<%= comment._id %>">
-            <div class="comment-user-container">
-              <img src="<%= comment.author.avatar %>" alt="" class="user_avatar">
-            </div>
-            <div class="comment-input-area">
-              <div class="comment-meta">
-                <strong><%= comment.author.username %></strong>
-                <span class="gag-votes"><%= comment.votes %> Votes</span>
+        <div class="comments-container">
+          <% gag.comments.forEach(function(comment){ %>
+          <div class="row comments-row">
+            <div class="comment-payload col-md-12" data-comment-id="<%= comment._id %>">
+              <div class="comment-user-container">
+                <img src="<%= comment.author.avatar %>" alt="" class="user_avatar">
               </div>
-              <p class="comment-main"><%= comment.text %></p>
-              <div class="comment-cta">
-                <a href="" class="comment-reply-link">Reply</a>
-                <a href=""><span class="glyphicon glyphicon-arrow-up"></a>
-                <a href=""><span class="glyphicon glyphicon-arrow-down"></a>
+              <div class="comment-input-area">
+                <div class="comment-meta">
+                  <strong><%= comment.author.username %></strong>
+                  <span class="gag-votes"><%= comment.votes %> Votes</span>
+                </div>
+                <p class="comment-main"><%= comment.text %></p>
+                <div class="comment-cta">
+                  <a href="" class="comment-reply-link">Reply</a>
+                  <a href=""><span class="glyphicon glyphicon-arrow-up"></a>
+                  <a href=""><span class="glyphicon glyphicon-arrow-down"></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <% }) %>
+          <% }) %>
+        </div>  
       </div>
     </div>
   </article>    
 </div>
-
-
-
-
-
-
-
-
-
-
 <% include ../partials/footer %>
