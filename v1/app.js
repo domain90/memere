@@ -10,13 +10,15 @@ var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var User = require("./models/user");
 var exsession = require("express-session");
+require('./config/passport.js')(passport);
 var Promise = require("bluebird");
 
 
 //Require Routes
-var gagsRoutes = require("./routes/gags.js");
-var commentsRoutes = require("./routes/comments.js");
-var authenticateRoutes = require("./routes/authenticate.js");
+var gagsRoutes 			= require("./routes/gags.js");
+var commentsRoutes 		= require("./routes/comments.js");
+var authenticateRoutes 	= require("./routes/authenticate.js");
+var fbauth 				= require("./routes/fb.js");
 
 mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.set("view engine", "ejs");
