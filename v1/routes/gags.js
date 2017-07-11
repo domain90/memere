@@ -4,6 +4,7 @@ var router = express.Router();
 var Gag = require("../models/gags");
 var mongoose = require("mongoose");
 var multer = require("multer");
+var passport = require("passport");
 mongoose.Promise = require('bluebird');
 
 
@@ -68,6 +69,20 @@ router.post("/", upload.single('gag'), function(req, res){
     
    
 })
+
+// =====================================
+// FACEBOOK ROUTES =====================
+// =====================================
+// route for facebook authentication and login
+router.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
+
+// handle the callback after facebook has authenticated the user
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect : '/',
+        failureRedirect : '/'
+}));
+
 
 //SHOW - displays more info about clicked/selected camp
 router.get("/gags/:id", function(req, res) {

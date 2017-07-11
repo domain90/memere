@@ -24,10 +24,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 // seeddb();
 
-
-
-
+/////////////////////////////////////
 //passport configuration
+/////////////////////////////////////
 app.use(exsession({
     secret: "This is a cool project",
     resave: false,
@@ -55,7 +54,9 @@ app.use(commentsRoutes);
 
 
 
-
+/////////////////////////////////////
+//Listen Event
+/////////////////////////////////////
 app.listen(8000, function(){
     console.log("Yelpcamp Started!");
 })
