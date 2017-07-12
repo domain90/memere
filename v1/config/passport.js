@@ -13,6 +13,18 @@ var configAuth = require('./auth');
 
 module.exports = function() {
 
+    // used to serialize the user for the session
+    passport.serializeUser(function(user, done) {
+        done(null, user.id);
+    });
+
+    // used to deserialize the user
+    passport.deserializeUser(function(id, done) {
+        User.findById(id, function(err, user) {
+            done(err, user);
+        });
+    });
+
     // code for login (use('local-login', new LocalStategy))
     // code for signup (use('local-signup', new LocalStategy))
 
@@ -24,7 +36,9 @@ module.exports = function() {
         // pull in our app id and secret from our auth.js file
         clientID        : configAuth.facebookAuth.clientID,
         clientSecret    : configAuth.facebookAuth.clientSecret,
-        callbackURL     : configAuth.facebookAuth.callbackURL
+        callbackURL     : configAuth.facebookAuth.callbackURL,
+        profileFields   : configAuth.facebookAuth.profileFields
+
 
     },
 
@@ -47,21 +61,25 @@ module.exports = function() {
                     return done(null, user); // user found, return that user
                 } else {
                     // if there is no user found with that facebook id, create them
-                    var newUser            = new User();
+                    var newUser = new User();
 
                     // set all of the facebook information in our user model
-                    newUser.facebook.id    = profile.id; // set the users facebook id                   
-                    newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
-                    newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                    newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
+                    newUser.facebook.id     = profile.id; // set the users facebook id                   
+                    newUser.facebook.name   = profile.displayName; // look at the passport user profile to see how names are returned
+                    newUser.facebook.avatar = profile.photos[0].value;
+                    newUser.facebook.token  = token; // we will save the token that facebook provides to the user         
 
                     // save our user to the database
-                    newUser.save(function(err) {
-                        if (err)
+                    newUser.save(function(err, data) {
+                        if (err) {
                             throw err;
-
+                        }
+                        else {
+                            console.log(data);
+                            done(null, newUser);
+                        }
                         // if successful, return the new user
-                        return done(null, newUser);
+                        
                     });
                 }
 

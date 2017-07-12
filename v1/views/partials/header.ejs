@@ -26,9 +26,9 @@
                     <li><a href="/register">Sign Up</a></li>
                <% } else { %>
                    <li>
-                        <a href=#>Welcome <%= currentUser.username %></a>
+                        <a href=#>Welcome <%= currentUser.username || currentUser.facebook.name %></a>
                    </li>
-                   <li><a href="#" class="avatar-container"><img src="<%= currentUser.avatar %>" alt="" class="user_avatar"></a></li>
+                   <li><a href="#" class="avatar-container"><img src="<%= currentUser.avatar || currentUser.facebook.avatar %>" alt="" class="user_avatar"></a></li>
                     <li><a href="/logout">Log Out</a></li>
                <% } %>
                     <li><a href="#myModal" id="upload" role="button" class="btn btn-large btn-primary" data-toggle="modal">Upload</a></li>
