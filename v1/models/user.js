@@ -9,13 +9,11 @@ var userSchema = new mongoose.Schema({
     password: String,
     info: {type: String, default: Date.now()},
     avatar: String,
-    
+    email: String,
+
     facebook         : {
         id           : String,
-        token        : String,
-        email        : String,
-        name         : String,
-        avatar       : String
+        token        : String
     },
 });
 

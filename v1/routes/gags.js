@@ -83,7 +83,6 @@ router.get('/auth/facebook/callback',
         failureRedirect : '/'
 }));
 
-
 //SHOW - displays more info about clicked/selected camp
 router.get("/gags/:id", function(req, res) {
     //find campground with provided ID
