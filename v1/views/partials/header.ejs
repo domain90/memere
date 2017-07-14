@@ -26,7 +26,7 @@
                     <li><a href="/register">Sign Up</a></li>
                <% } else { %>
                    <li>
-                        <a href=#>Welcome <%= currentUser.username || currentUser.facebook.name %></a>
+                        <a href=#><%= currentUser.username %></a>
                    </li>
                    <li class="dropdown"><a href="#" class="avatar-container dropdown-toggle" data-toggle="dropdown"><img src="<%= currentUser.avatar || currentUser.facebook.avatar %>" alt="" class="user_avatar"></a>
                    <ul class="dropdown-menu">

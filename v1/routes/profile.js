@@ -21,15 +21,16 @@ var upload = multer({ storage: storage });
 //SHOW - Display User Profile
 router.get("/", function(req, res) {
     //Shows the data of the current user
-    if(err){
-        console.log(err);
-    } else {
-        res.render("profile");
-    }
+    res.render("profile");
+    console.log(currentUser._id)
 })
 
-
-
+//UPDATE - Update User Profile
+router.post("/:id", function(req, res) {
+    //Shows the data of the current user
+   console.log(req.params.id)
+    
+})
 
 
 
