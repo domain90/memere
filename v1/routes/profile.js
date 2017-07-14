@@ -19,15 +19,13 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 //SHOW - Display User Profile
-router.get("/profile/:id", function(req, res) {
-    //Find corresponded with provided ID 
-    User.findById(req.params.id).exec(function(err, foundUser){
-        if(err){
-            console.log(err);
-        } else {
-            console.log(foundUser);
-        }
-    })
+router.get("/", function(req, res) {
+    //Shows the data of the current user
+    if(err){
+        console.log(err);
+    } else {
+        res.render("profile");
+    }
 })
 
 
@@ -35,7 +33,7 @@ router.get("/profile/:id", function(req, res) {
 
 
 
-
+module.exports = router;
 
 
 

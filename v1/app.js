@@ -19,6 +19,7 @@ var gagsRoutes 			= require("./routes/gags.js");
 var commentsRoutes 		= require("./routes/comments.js");
 var authenticateRoutes 	= require("./routes/authenticate.js");
 var fbauth 				= require("./routes/fb.js");
+var profile             = require("./routes/profile.js")
 
 mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.set("view engine", "ejs");
@@ -50,7 +51,7 @@ app.use(function(req, res, next){
 app.use(authenticateRoutes);
 app.use('/', gagsRoutes);
 app.use(commentsRoutes);
-
+app.use('/profile', profile);
 
 
 
