@@ -13,19 +13,18 @@ var exsession = require("express-session");
 require('./config/passport.js')(passport);
 var Promise = require("bluebird");
 
+mongoose.connect("mongodb://localhost/yelp_camp_v6");
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
+// seeddb();
 
 //Require Routes
 var gagsRoutes 			= require("./routes/gags.js");
 var commentsRoutes 		= require("./routes/comments.js");
 var authenticateRoutes 	= require("./routes/authenticate.js");
 var fbauth 				= require("./routes/fb.js");
-var profile             = require("./routes/profile.js")
-
-mongoose.connect("mongodb://localhost/yelp_camp_v6");
-app.set("view engine", "ejs");
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + "/public"));
-// seeddb();
+var profile             = require("./routes/profile.js");
 
 /////////////////////////////////////
 //passport configuration

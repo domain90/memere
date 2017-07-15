@@ -22,13 +22,28 @@ var upload = multer({ storage: storage });
 router.get("/", function(req, res) {
     //Shows the data of the current user
     res.render("profile");
-    console.log(currentUser._id)
 })
 
 //UPDATE - Update User Profile
 router.post("/:id", function(req, res) {
-    //Shows the data of the current user
-   console.log(req.params.id)
+    //Capture new data
+    var newUsername = req.body.username;
+    var newEmail    = req.body.email;
+
+    var updateProfile = { username: newUsername, email: newEmail };
+
+    User.findByIdAndUpdate(req.params.id, updateProfile, function(err, update){
+    	if(err){
+    		console.log(err)
+    	} else {
+    		res.redirect("profile")
+    		console.log(newUsername)
+    		console.log(newEmail)
+    		console.log(updateProfile)
+    		console.log(req.body)
+    		console.log(req.params.id)
+    	}
+    })
     
 })
 

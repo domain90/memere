@@ -7,7 +7,6 @@ var multer = require("multer");
 var passport = require("passport");
 mongoose.Promise = require('bluebird');
 
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads/')
