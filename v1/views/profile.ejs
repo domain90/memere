@@ -2,11 +2,12 @@
 
 <div class="container">
 	<div class="row">
-	<form  method="POST" enctype="multipart/form-data" action="/profile/<%= currentUser._id %>">
+	
 		<div class="col-6">
 			<img src="<%= currentUser.avatar %>" alt="">
 		</div>
 		<div class="col-6">
+		<form method="POST" enctype="multipart/form-data" action="/">
 			<h2>Tu perfil</h2>
 			<div class="form-group">
 				<label for="">Username</label>
@@ -16,9 +17,10 @@
 				<label for="">Email</label>
 			    <input type="text" name="email" class="form-control" >
 			</div>
-		</div>
-		<button class="btn btn-primary">Actualizar</button>
+			<button class="btn btn-primary">Actualizar</button>
 		</form>
+		</div>
+		
 	</div>
 	
 </div>

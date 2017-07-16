@@ -29,7 +29,6 @@ router.get("/", function(req, res){
             res.render("gags/index", {Gags: allgags, currentUser: req.user});
         }
     })
-    //res.render("campgrounds", {campgrounds: campgrounds});
 })
 
 //NEW - show form to add
@@ -37,7 +36,49 @@ router.get("/new", isLoggedIn, function(req, res) {
     res.render("gags/new");
 })
 
+
+///////////////////////
+//Classify the content
+///////////////////////
+//Chistes, Index
+router.get("/chistes", function(req, res){
+    Gag.find({ categories: "Chistes" }, function(err, allChistes){
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("gags/index", { Gags: allChistes, currentUser: req.user})
+        }
+    })
+})
+
+//Deportes
+router.get("/deportes", function(req, res){
+    Gag.find({ category : "Deportes" }, function(err, allDeportes){
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("gags/index", { Gags: allDeportes, currentUser: req.user})
+            console.log(allDeportes)
+        }
+    })
+})
+
+//Mujeres
+router.get("/mujeres", function(req, res){
+    Gag.find({ categories: "Mujeres" }, function(err, allMujeres){
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("gags/index", { Gags: allMujeres, currentUser: req.user})
+        }
+    })
+})
+
+
+
+
 app.use(isLoggedIn);
+
 //CREATE
 router.post("/", upload.single('gag'), function(req, res){
     //get data from form and add to array
@@ -53,7 +94,8 @@ router.post("/", upload.single('gag'), function(req, res){
         id: req.user.id,
         username: req.user.username
     }
-    var newGag = {title: title, image: image, info: info, author: author};
+    var category = req.body.category;
+    var newGag = {title: title, image: image, info: info, author: author, category: category};
     //Save to database
     Gag.create(newGag, function(err, newlyGag){
         if(err){
@@ -61,13 +103,35 @@ router.post("/", upload.single('gag'), function(req, res){
             console.log(err);
         } else {
             //redirect to index
-            console.log(req.file)
+            console.log(newlyGag)
             res.redirect("/");
         }
     })
     
    
 })
+
+
+//SHOW - displays more info about clicked/selected camp
+router.get("/gags/:id", function(req, res) {
+    //find campground with provided ID
+    Gag.findById(req.params.id).populate("comments").exec(function(err, foundGag){
+        if(err){
+            console.log(err);
+        } else {
+            //show more info in a template
+            res.render("gags/show", {gag: foundGag});
+        }
+    })
+})
+
+
+
+
+
+
+
+
 
 // =====================================
 // FACEBOOK ROUTES =====================
@@ -82,18 +146,7 @@ router.get('/auth/facebook/callback',
         failureRedirect : '/'
 }));
 
-//SHOW - displays more info about clicked/selected camp
-router.get("/gags/:id", function(req, res) {
-    //find campground with provided ID
-    Gag.findById(req.params.id).populate("comments").exec(function(err, foundGag){
-        if(err){
-            console.log(err);
-        } else {
-            //show more info in a template
-            res.render("gags/show", {gag: foundGag});
-        }
-    })
-})
+
 
 //Middleware 
 function isLoggedIn(req, res, next) {

@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var gagSchema = new mongoose.Schema({
     title: String,
     image: String,
+    category: {type: String, default: "Chistes"},
     info: {type: String, default: Date.now()},
     author: {
         id: {
