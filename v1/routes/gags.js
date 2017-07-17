@@ -42,7 +42,7 @@ router.get("/new", isLoggedIn, function(req, res) {
 ///////////////////////
 //Chistes, Index
 router.get("/chistes", function(req, res){
-    Gag.find({ categories: "Chistes" }, function(err, allChistes){
+    Gag.find({ category: "Chistes" }).sort({info: -1}).exec(function(err, allChistes){
         if(err) {
             console.log(err)
         } else {
@@ -53,7 +53,7 @@ router.get("/chistes", function(req, res){
 
 //Deportes
 router.get("/deportes", function(req, res){
-    Gag.find({ category : "Deportes" }, function(err, allDeportes){
+    Gag.find({ category: "Deportes" }).sort({info: -1}).exec(function(err, allDeportes){
         if(err) {
             console.log(err)
         } else {
@@ -65,7 +65,7 @@ router.get("/deportes", function(req, res){
 
 //Mujeres
 router.get("/mujeres", function(req, res){
-    Gag.find({ categories: "Mujeres" }, function(err, allMujeres){
+    Gag.find({ category: "Mujeres" }.sort({info: -1}).exec(function(err, allMujeres){
         if(err) {
             console.log(err)
         } else {
