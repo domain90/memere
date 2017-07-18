@@ -2,36 +2,47 @@ $(function() {
 
 	// $('.body-half a').click(function() {
 	// 	var title = "Hello, the test worked!"
- //    	$('.modal-title').html(title);
+    //  $('.modal-title').html(title);
 	// });
 
-	
+	/////////////////
+	/////VOTING//////
+	/////////////////
+	$(".upvote").on("click", function(){
+		$(this).toggleClass("upvoted");
+		$(this).children().toggleClass("upvoted");
+	})
 
+	$(".downvote").on("click", function(){
+		$(this).toggleClass("downvoted");
+		$(this).children().toggleClass("downvoted");
+	})
 
+	///////////////////////
+	/////COMMENT-REPLY/////
+	//////////////////////
+	var $payload = $(".payload:first").clone().addClass("col-md-12");
 
+	$(".comment-reply-link").on("click", function(event) {
 
+		event.preventDefault();
+		event.stopPropagation();
 
+		var $commentPayload = $(this).parents(".comment-payload.col-md-12");
+		var $commentRow = $(this).parents(".row.comments-row");
+		var commentOn = false;
 
-
-
-
-
-	// $(".comment-reply-link").on("click", function(event) {
-
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-
-	// 	var $payload = $(".payload");	
-	// 	var $commentPayload = $(this).parents(".comment-payload.col-md-12");
-	// 	var $toggled = false;
-
-	// 	$commentPayload.siblings().find(".payload").remove();
-	// 	$payload.appendTo($commentPayload);
-	// 	$toggled = true;
-
-	// })
-
-
+		function addComment(){
+			$payload.appendTo($commentPayload);
+			// if(commentOn == false){
+			// 	$payload.clone().appendTo($commentRow);
+			// 	$commentOn = true;
+			// } else {
+			// 	$payload.appendTo($commentRow);
+			// }
+		}
+		addComment();
+	})
 
 	// AJAX Reply
 	// $(".commentSubmit").on("click", function(event){

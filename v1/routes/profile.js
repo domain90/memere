@@ -33,7 +33,7 @@ router.post("/", function(req, res) {
     //Capture new data
     var newUsername = req.body.username;
     var newEmail    = req.body.email;
-    var userId      = currentUser._id
+    var userId      = currentUser._id;
 
     var updateProfile = { username: newUsername, email: newEmail };
 

@@ -13,13 +13,18 @@ var exsession = require("express-session");
 require('./config/passport.js')(passport);
 var Promise = require("bluebird");
 
+/////////////////////////////////////
+//Server Config
+/////////////////////////////////////
 mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 // seeddb();
 
+/////////////////////////////////////
 //Require Routes
+/////////////////////////////////////
 var gagsRoutes 			= require("./routes/gags.js");
 var commentsRoutes 		= require("./routes/comments.js");
 var authenticateRoutes 	= require("./routes/authenticate.js");
@@ -47,14 +52,13 @@ app.use(function(req, res, next){
     next();
 })
 
+/////////////////////////////////////
+// Use Routes
+/////////////////////////////////////
 app.use(authenticateRoutes);
 app.use('/', gagsRoutes);
 app.use(commentsRoutes);
 app.use('/profile', profile);
-
-
-
-
 
 /////////////////////////////////////
 //Listen Event

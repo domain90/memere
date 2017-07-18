@@ -1,3 +1,6 @@
+/******************************************************/
+/*HEADER*/
+/******************************************************/
 .navbar > .container-fluid {
 	background-color: #000;
 }
@@ -65,10 +68,9 @@ ul {
 }
 
 
-
-
-
+/******************************************************/
 /* INDEX */
+/******************************************************/
 .card {
 	width: 600px;
 	margin: 0 auto;
@@ -108,21 +110,19 @@ ul {
 	width: 70%;
 	margin: 0 auto;
 }
-
 .signup img{
 	width: 150px;
 }
-
-
 input[type=file] {
 	margin: 0 auto;
 }
-
 label {
 	float: left;
 }
 
+/******************************************************/
 /* SHOW */
+/******************************************************/
 .payload .user_avatar {
 	width: 50px;
 }
@@ -157,6 +157,9 @@ label {
 	font-size: 12px;
 	padding-left: 5px;
 }
+.comment-cta {
+	margin-bottom: 10px;
+}
 .comment-cta a{
 	font-size: 13px;
 	font-weight: 700;
@@ -164,4 +167,21 @@ label {
 }
 .comment-reply-link {
 	padding-right: 5px;
+}
+.comment-payload .payload .comment-user-container img {
+	width: 50px;
+}
+.comment-payload .payload .comment-user-container .comment-input-area {
+	margin-left: 45px;
+}
+/******************************************************/
+/*TOGGLE*/
+/******************************************************/
+.upvoted {
+	border-color: blue;
+	color: blue;
+}
+.downvoted {
+	border-color: red;
+	color: red;
 }

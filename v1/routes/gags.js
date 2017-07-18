@@ -46,7 +46,7 @@ router.get("/chistes", function(req, res){
         if(err) {
             console.log(err)
         } else {
-            res.render("gags/index", { Gags: allChistes, currentUser: req.user})
+            res.render("gags/index", { Gags: allChistes, currentUser: req.user} )
         }
     })
 })
@@ -57,19 +57,18 @@ router.get("/deportes", function(req, res){
         if(err) {
             console.log(err)
         } else {
-            res.render("gags/index", { Gags: allDeportes, currentUser: req.user})
-            console.log(allDeportes)
+            res.render("gags/index", { Gags: allDeportes, currentUser: req.user} )
         }
     })
 })
 
 //Mujeres
 router.get("/mujeres", function(req, res){
-    Gag.find({ category: "Mujeres" }.sort({info: -1}).exec(function(err, allMujeres){
+    Gag.find({ category: "Mujeres" }).sort({info: -1}).exec(function(err, allMujeres){
         if(err) {
             console.log(err)
         } else {
-            res.render("gags/index", { Gags: allMujeres, currentUser: req.user})
+            res.render("gags/index", { Gags: allMujeres, currentUser: req.user} )
         }
     })
 })
