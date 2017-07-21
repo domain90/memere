@@ -28,17 +28,20 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
             if(err){
               console.log(err)
             } else {
-              console.log(req.body);
+              // console.log(req.body);
               comment.author.id         = req.user.id;
               comment.author.username   = req.user.username;
               comment.author.avatar     = req.user.avatar;
-              //Connect new comment to campground
+              //Connect new comment to gag
               comment.save();
               gag.comments.push(comment)
               gag.save()
               //Redirect
-              res.redirect('back')
-              // res.send( JSON.stringify({comment}) )
+              // res.redirect('back')
+              res.send( req.body );
+              // res.json(req.body.comment);
+              // res.end();
+              // res.redirect("/gags/" + gag._id);
             }
           })
         }

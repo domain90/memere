@@ -21,13 +21,14 @@ $(function() {
 	///////////////////////
 	/////COMMENT-REPLY/////
 	//////////////////////
-	var $payload = $(".payload:first").clone().addClass("col-md-12");
+	var $payload = $(".payload").clone();
 
 	$(".comment-reply-link").on("click", function(event) {
 
 		event.preventDefault();
 		event.stopPropagation();
 
+		// var dataId = $(this).parents(".comment-payload.col-md-12").data("commentId");
 		var $commentPayload = $(this).parents(".comment-payload.col-md-12");
 		var $commentRow = $(this).parents(".row.comments-row");
 		var commentOn = false;
@@ -42,40 +43,47 @@ $(function() {
 			// }
 		}
 		addComment();
+		// console.log(dataId);
 	})
 
-	// AJAX Reply
-	// $(".commentSubmit").on("click", function(event){
+	$(document).on("click", "#commentSubmit", function(e){
 
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
+		e.preventDefault();
+		e.stopPropagation();
 
-	// 	var articleId 		 = $("article").data("id");
-	// 	var commentContainer = $(".comment-container");
-	// 	var divParent 		 = $(this).closest(".comment-payload");
-	// 	// var commentId = divParent.data("commentId");
+		var articleId 		 = $("article").data("id");
+		var commentContainer = $(".comment-container");
+		var commentRow 	 	 = $(this).parents(".row.comments-row");
+		// var divParent 		 = $(this).closest(".comment-payload");
+		// var commentId = divParent.data("commentId");
 
-	// 	$.ajax({
-	// 		 url: "/gags/" + articleId,
-	// 		 type: "POST",
-	// 		 contentType: "application/json",
-	// 		 data: JSON.stringify({ text: $("#comment-text").val() })
-	// 		 }).done(function(result){
-	// 		 	addComment(JSON.parse(result))
-	// 		 })
-	// 		 .fail(function(err) {c 
-	// 		 	console.log(err);
-	// 		 })
+		$.ajax({
+			 url: "/gags/" + articleId,
+			 // dataType: "json",
+			 type: "POST",
+			 contentType: "application/json; charset=utf-8",
+			 data: JSON.stringify({ text: $("#comment-text").val() })
+			 }).done(function(result){
+			 	// console.log(JSON.parse(result));
+			 	console.log(result);
+			 	addComment(result);
+			 })
+			 .fail(function(err) {
+			 	console.log(err);
+			 })
 		
 
-	// 	var addComment = function (comment) {
-	// 		var payload = "<div>" + comment + "</div>";
-	// 		commentContainer.append(payload);			     
-	// 	}
+		var addComment = function (comment) {
+			// var comments = JSON.parse(comment);
+			var payload = "<div>" + comment.text + "</div>";
+			commentRow.append(payload);			     
+		}
 
-	// 	console.log($("#comment-text").val())
+		// // console.log($("#comment-text").val())
 
-	// })
+	})
+
+
 
 })
 
