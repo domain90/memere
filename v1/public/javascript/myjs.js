@@ -59,13 +59,13 @@ $(function() {
 
 		$.ajax({
 			 url: "/gags/" + articleId,
-			 // dataType: "json",
 			 type: "POST",
 			 contentType: "application/json; charset=utf-8",
-			 data: JSON.stringify({ text: $("#comment-text").val() })
+			  // dataType: "json",
+			 data: JSON.stringify({ comment: {text: $("#comment-text").val() } })
 			 }).done(function(result){
 			 	// console.log(JSON.parse(result));
-			 	console.log(result);
+			 	console.log(result.author.username);
 			 	addComment(result);
 			 })
 			 .fail(function(err) {
@@ -75,7 +75,7 @@ $(function() {
 
 		var addComment = function (comment) {
 			// var comments = JSON.parse(comment);
-			var payload = "<div>" + comment.text + "</div>";
+			var payload = "<div>" + comment.author.username + "</div>";
 			commentRow.append(payload);			     
 		}
 
