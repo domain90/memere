@@ -65,7 +65,7 @@ $(function() {
 			 data: JSON.stringify({ comment: {text: $("#comment-text").val() } })
 			 }).done(function(result){
 			 	// console.log(JSON.parse(result));
-			 	console.log(result.author.username);
+			 	// console.log(result.author.username);
 			 	addComment(result);
 			 })
 			 .fail(function(err) {
@@ -75,17 +75,29 @@ $(function() {
 
 		var addComment = function (comment) {
 			// var comments = JSON.parse(comment);
-			var payload = "<div>" + comment.author.username + "</div>";
+			// var payload = "<div>" + comment.author.username + "</div>";
+			var payload =  '<div class="comment-payload col-md-12" data-comment-id=' + comment._id + '>' +
+			              		'<div class="comment-user-container">' + 
+			                		'<img src=' + comment.author.avatar + ' class="user_avatar">' + 
+			              		'</div>' +
+			              		'<div class="comment-input-area">' + 
+					                '<div class="comment-meta">' + 
+					                  '<strong>' + comment.author.username + '</strong>' +
+					                  '<span class="gag-votes">' + comment.votes + 'Votes</span>'
+					                '</div>' + 
+			                	'<p class="comment-main">' + comment.text + '</p>' + 
+				                '<div class="comment-cta">' + 
+				                  '<a href="" class="comment-reply-link">Reply</a>' +
+				                  '<a href=""><span class="glyphicon glyphicon-arrow-up"></a>' +
+				                  '<a href=""><span class="glyphicon glyphicon-arrow-down"></a>' +
+				                '</div>' +
+				              '</div>' + 
+				            '</div>';
+			// var payload = $(".row.comments-row").clone();
 			commentRow.append(payload);			     
 		}
 
 		// // console.log($("#comment-text").val())
 
 	})
-
-
-
 })
-
-
-

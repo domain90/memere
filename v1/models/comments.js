@@ -12,7 +12,6 @@ var commentSchema = new mongoose.Schema({
         avatar: String
     },
     votes: {type: Number, default: 1}
-
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

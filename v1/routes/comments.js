@@ -45,6 +45,23 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
               // res.redirect("/gags/" + gag._id);
             }
           })
+          // var newComment = new Comment();
+          // newComment.author.id       =req.user.id;
+          // newComment.author.username =req.user.username;
+          // newComment.author.avatar   =req.user.avatar;
+          // newComment.text            =req.body.comment.text;
+         
+          // gag.comments.push(newComment);
+          // gag.save();
+
+          // newComment.save(function(err, newComment){
+          //   if(err){
+          //     console.log(err)
+          //   } else {
+          //     // res.json(newComment);
+          //     res.redirect("/gags/" + gag._id);
+          //   }
+          // });
         }
      })
 })
