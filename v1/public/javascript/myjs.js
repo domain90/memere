@@ -21,7 +21,7 @@ $(function() {
 	///////////////////////
 	/////COMMENT-REPLY/////
 	//////////////////////
-	var $payload = $(".payload").clone();
+	var $payload = $(".payload").clone().addClass('reply');
 
 	$(".comment-reply-link").on("click", function(event) {
 
@@ -54,18 +54,20 @@ $(function() {
 		var articleId 		 = $("article").data("id");
 		var commentContainer = $(".comment-container");
 		var commentRow 	 	 = $(this).parents(".row.comments-row");
+		var textVal          = $(this).parents('form').find("textarea#comment-text.comment-input").val();
 		// var divParent 		 = $(this).closest(".comment-payload");
 		// var commentId = divParent.data("commentId");
-
+		console.log(textVal);
 		$.ajax({
 			 url: "/gags/" + articleId,
 			 type: "POST",
 			 contentType: "application/json; charset=utf-8",
 			  // dataType: "json",
-			 data: JSON.stringify({ comment: {text: $("#comment-text").val() } })
+			 data: JSON.stringify({ comment: {text: textVal } })
 			 }).done(function(result){
 			 	// console.log(JSON.parse(result));
 			 	// console.log(result.author.username);
+			 	console.log(result);
 			 	addComment(result);
 			 })
 			 .fail(function(err) {
@@ -83,7 +85,7 @@ $(function() {
 			              		'<div class="comment-input-area">' + 
 					                '<div class="comment-meta">' + 
 					                  '<strong>' + comment.author.username + '</strong>' +
-					                  '<span class="gag-votes">' + comment.votes + 'Votes</span>'
+					                  '<span class="gag-votes">' + comment.votes + ' Votes</span>' +
 					                '</div>' + 
 			                	'<p class="comment-main">' + comment.text + '</p>' + 
 				                '<div class="comment-cta">' + 
@@ -97,7 +99,7 @@ $(function() {
 			commentRow.append(payload);			     
 		}
 
-		// // console.log($("#comment-text").val())
+		// console.log($("#comment-text").val())
 
 	})
 })

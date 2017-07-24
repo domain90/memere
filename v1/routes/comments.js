@@ -32,7 +32,7 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
               comment.author.id         = req.user.id;
               comment.author.username   = req.user.username;
               comment.author.avatar     = req.user.avatar;
-              comment.text              = req.body.text;
+              // comment.text              = req.body.comment.text;
               //Connect new comment to gag
               comment.save();
               gag.comments.push(comment)
@@ -41,6 +41,7 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
               // res.redirect('back')
               // res.send( req.body.comment );
               res.json(comment);
+              console.log(req.body.comment)
               // res.end();
               // res.redirect("/gags/" + gag._id);
             }
