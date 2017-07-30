@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router({mergeParams: true});
 var Gag = require("../models/gags.js");
 var Comment = require("../models/comments.js");
+var Reply   = require("../models/reply.js");
 //====================================
 //COMMENTS
 //====================================
@@ -65,6 +66,42 @@ router.post("/gags/:id", isLoggedIn, function(req, res) {
           // });
         }
      })
+})
+
+router.post("/gags/:id/comment/:idcomment/reply", function(req, res){
+  Gag.findById(req.params.id, function(err, gag){
+      if(err){
+         console.log(err);
+      } else {
+        Comment.findById(req.params.idcomment, function(err, comment){
+          if(err){
+            console.log(err);
+          } else {
+            Reply.create(req.body.comment, function(err, reply){
+              if(err){
+                console.log(err)
+              } else {
+                // console.log(req.body);
+                reply.author.id         = req.user.id;
+                reply.author.username   = req.user.username;
+                reply.author.avatar     = req.user.avatar;
+                // comment.text              = req.body.comment.text;
+                //Connect new comment to gag
+                reply.save();
+                gag.comments.reply.push(comment);
+                gag.comments.save();
+                gag.save();
+                //Redirect
+                // res.redirect('back')
+                // res.send( req.body.comment );
+                res.json(reply);
+                console.log(req.body.comment)
+                }
+            })
+          }
+        })
+      }
+    })
 })
 
 

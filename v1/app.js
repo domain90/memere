@@ -9,6 +9,7 @@ var passport = require("passport");
 var LocalStrategy = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var User = require("./models/user");
+var Reply = require("./models/reply");
 var exsession = require("express-session");
 require('./config/passport.js')(passport);
 var Promise = require("bluebird");

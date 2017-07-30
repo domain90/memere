@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var commentSchema = new mongoose.Schema({
+var replySchema = new mongoose.Schema({
     text: String,
     info: {type: String, default: Date.now()},
     author: {
@@ -11,13 +11,13 @@ var commentSchema = new mongoose.Schema({
         username: String,
         avatar: String
     },
-    reply: [
+    parentComment: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Reply"
+            ref: "Comment"
         },
     ],
     votes: {type: Number, default: 1}
 });
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Reply", replySchema);

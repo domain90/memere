@@ -114,12 +114,23 @@ router.post("/", upload.single('gag'), function(req, res){
 //SHOW - displays more info about clicked/selected camp
 router.get("/gags/:id", function(req, res) {
     //find campground with provided ID
-    Gag.findById(req.params.id).populate("comments").exec(function(err, foundGag){
+    Gag.findById(req.params.id)
+       // .populate("comments")
+       .populate({
+            path: 'comments',
+            model: 'Comment',
+            populate: {
+                path: 'reply',
+                model: 'Reply'
+            }
+        })
+       .exec(function(err, foundGag){
         if(err){
             console.log(err);
         } else {
             //show more info in a template
             res.render("gags/show", {gag: foundGag});
+            console.log(foundGag);
         }
     })
 })

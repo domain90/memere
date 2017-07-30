@@ -46,6 +46,10 @@ $(function() {
 		// console.log(dataId);
 	})
 
+
+	///////////////////////
+	////////AJAX_REPLY/////
+	///////////////////////
 	$(document).on("click", "#commentSubmit", function(e){
 
 		e.preventDefault();
@@ -55,6 +59,7 @@ $(function() {
 		var commentContainer = $(".comment-container");
 		var commentRow 	 	 = $(this).parents(".row.comments-row");
 		var textVal          = $(this).parents('form').find("textarea#comment-text.comment-input").val();
+		var commentParent    = $(this).parents(".comment-payload").data("commentId");
 		// var divParent 		 = $(this).closest(".comment-payload");
 		// var commentId = divParent.data("commentId");
 		console.log(textVal);
@@ -68,7 +73,7 @@ $(function() {
 			 	// console.log(JSON.parse(result));
 			 	// console.log(result.author.username);
 			 	console.log(result);
-			 	addComment(result);
+			 	addComment(result).focus();
 			 })
 			 .fail(function(err) {
 			 	console.log(err);
@@ -99,6 +104,10 @@ $(function() {
 			commentRow.append(payload);			     
 		}
 
+		var removeReply = function() {
+			var replybox = $(".reply");
+			replybox.remove();
+		}
 		// console.log($("#comment-text").val())
 
 	})
