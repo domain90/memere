@@ -1,11 +1,15 @@
 /******************************************************/
 /*HEADER*/
 /******************************************************/
+.navbar {
+	border: none;
+}
 .navbar > .container-fluid {
-	background-color: #000;
+	background-color: #f4d400;
 }
 .navbar-default .navbar-nav> li > a {
-	color: #fff;
+	color: #000;
+	font-weight: 700;
 }
 .avatar-container {
 	width: 30px;
@@ -18,16 +22,34 @@
 	border-radius: 2px;
 }
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-	color: #e7e7e7;
+	color: #000;
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
-	background-color: #000;
+	background-color: #f4d400;
+}
+#username a{
+	padding-right: 8px;
+	pointer-events: none;
+}
+li.dropdown {
+	margin-right: 20px;
 }
 .navbar-nav>li>.dropdown-menu {
 	margin-top: 25px;
 }
+.uploadli {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
+#upload {
+	color: #fff;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border: none;
+	background-color: #3DB1E2;
+}
 a#upload:focus, a#upload:hover {
-	background-color: #286090;
+	background-color: #3DB1E2;
 }
 /*MODAL*/
 .modal-body {
@@ -91,6 +113,7 @@ ul {
 }
 .content-img img {
 	min-width: 600px;
+	max-width: 600px;
 	max-height: 600px;
 }
 .meta {
@@ -153,6 +176,10 @@ label {
 	line-height: 2;
 	margin-bottom: 0;
 }
+.gag-title {
+	font-size: 24px;
+	font-weight: 700;
+}
 .gag-votes {
 	font-size: 12px;
 	padding-left: 5px;
@@ -184,4 +211,10 @@ label {
 .downvoted {
 	border-color: red;
 	color: red;
+}
+/******************************************************/
+/*LOGIN*/
+/******************************************************/
+.login {
+	text-align: center;
 }

@@ -130,7 +130,6 @@ router.get("/gags/:id", function(req, res) {
         } else {
             //show more info in a template
             res.render("gags/show", {gag: foundGag});
-            console.log(foundGag);
         }
     })
 })

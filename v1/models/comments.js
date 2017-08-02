@@ -11,12 +11,7 @@ var commentSchema = new mongoose.Schema({
         username: String,
         avatar: String
     },
-    reply: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Reply"
-        },
-    ],
+    commentChildren: [],
     votes: {type: Number, default: 1}
 });
 

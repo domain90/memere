@@ -80,17 +80,17 @@
                 </div>
               </div>
             </div>
-            <% comment.reply.forEach(function(reply){ %>
-            <div class="comment-payload col-md-12" data-comment-id="<%= reply._id %>">
+            <% comment.commentChildren.forEach(function(commentChildren){ %>
+            <div class="comment-payload col-md-12" data-comment-id="<%= commentChildren._id %>">
               <div class="comment-user-container">
-                <img src="<%= reply.author.avatar %>" alt="" class="user_avatar">
+                <img src="<%= commentChildren.author.avatar %>" alt="" class="user_avatar">
               </div>
               <div class="comment-input-area">
                 <div class="comment-meta">
-                  <strong><%= reply.author.username %></strong>
-                  <span class="gag-votes"><%= reply.votes %> Votes</span>
+                  <strong><%= commentChildren.author.username %></strong>
+                  <span class="gag-votes"><%= commentChildren.votes %> Votes</span>
                 </div>
-                <p class="comment-main"><%= reply.text %></p>
+                <p class="comment-main"><%= commentChildren.text %></p>
                 <div class="comment-cta">
                   <a href="" class="comment-reply-link">Reply</a>
                   <a href=""><span class="glyphicon glyphicon-arrow-up"></a>

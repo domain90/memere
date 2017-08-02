@@ -77,25 +77,26 @@ router.post("/gags/:id/comment/:idcomment/reply", function(req, res){
           if(err){
             console.log(err);
           } else {
-            Reply.create(req.body.comment, function(err, reply){
+            Comment.create(req.body.comment, function(err, commentChildren){
               if(err){
                 console.log(err)
               } else {
                 // console.log(req.body);
-                reply.author.id         = req.user.id;
-                reply.author.username   = req.user.username;
-                reply.author.avatar     = req.user.avatar;
+                commentChildren.author.id         = req.user.id;
+                commentChildren.author.username   = req.user.username;
+                commentChildren.author.avatar     = req.user.avatar;
                 // comment.text              = req.body.comment.text;
                 //Connect new comment to gag
-                reply.save();
-                gag.comments.reply.push(comment);
-                gag.comments.save();
+                commentChildren.save();
+                comment.commentChildren.push(commentChildren);
+                // reply.parentComment.push(comment);
+                comment.save();
                 gag.save();
                 //Redirect
                 // res.redirect('back')
                 // res.send( req.body.comment );
-                res.json(reply);
-                console.log(req.body.comment)
+                res.json(commentChildren);
+                console.log(comment)
                 }
             })
           }

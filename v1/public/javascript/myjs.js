@@ -64,7 +64,7 @@ $(function() {
 		// var commentId = divParent.data("commentId");
 		console.log(textVal);
 		$.ajax({
-			 url: "/gags/" + articleId,
+			 url: "/gags/" + articleId + "/comment/" + commentParent + "/reply",
 			 type: "POST",
 			 contentType: "application/json; charset=utf-8",
 			  // dataType: "json",
