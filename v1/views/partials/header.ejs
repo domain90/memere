@@ -13,9 +13,14 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
                 <a class="navbar-brand" href="/">Memere</a>
             </div>
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="/chistes">Chistes</a></li>
                     <li><a href="/deportes">Deportes</a></li>
@@ -52,11 +57,11 @@
                     <div class="modal-body" id="modal-target">
                         <div class="body-half left">
                             <a id="create-meme" data-dismiss="modal" href="#modalUpload" data-toggle="modal"><span class="glyphicon glyphicon-arrow-up"></a>
-                            <label for="" class="modal-menu-label">Subir un meme</label>
+                            <label for="" class="modal-menu-label">Subir un meme<br>(Archivos)</label>
                         </div>
                         <div class="body-half right">
                             <a id="upload-meme" data-dismiss="modal" href="#modalCreate" data-toggle="modal"><span class="glyphicon glyphicon-plus"></a>
-                            <label for="" class="modal-menu-label" >Crear un meme</label>
+                            <label for="" class="modal-menu-label" >Crear un meme<br>(Enlances)</label>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -128,7 +133,7 @@
                                 <input class="form-control" type="text" name="title" placeholder="Title">
                             </div>
                             <div class="form-group">
-                                <label for="">Agregue el link</label>
+                                <label for="">Agregue el enlace</label>
                                 <input class="form-control" type="text" name="url" placeholder="Link">
                             </div>
                             <div class="form-group">

@@ -293,3 +293,32 @@ label {
 	font-weight: 700;
 	font-size: 16px;
 }
+
+
+/******************************************************/
+/******************************************************/
+/*SIGN UP*/
+/******************************************************/
+/******************************************************/
+@media(max-width: 768px) {
+
+/******************************************************/
+/*MENU*/
+/******************************************************/
+.navbar-default .navbar-toggle {
+	border: none;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+	background-color: #E5D244;
+}
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #000;
+	height: 3px;
+	border-radius: 5px;
+}
+
+
+
+
+
+}

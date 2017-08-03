@@ -11,10 +11,10 @@ module.exports = {
         'passReqToCallback' : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     }
 
-    // 'googleAuth' : {
-    //     'clientID'      : 'your-secret-clientID-here',
-    //     'clientSecret'  : 'your-client-secret-here',
-    //     'callbackURL'   : 'http://localhost:8000/auth/google/callback'
-    // }
+    'googleAuth' : {
+        'clientID'      : '869259037617-40u571mmi303scscptrvt2rjloa7daap.apps.googleusercontent.com',
+        'clientSecret'  : 'np-wGW-VLPrsWUW1QFOhRhF7',
+        'callbackURL'   : 'http://localhost:8000/auth/google/callback'
+    }
 
 };
