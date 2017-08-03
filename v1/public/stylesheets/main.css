@@ -29,7 +29,7 @@
 	color: #000;
 }
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
-	background-color: #f4d400;
+	background-color: transparent;
 }
 #username a{
 	padding-right: 8px;

@@ -134,14 +134,6 @@ router.get("/gags/:id", function(req, res) {
     })
 })
 
-
-
-
-
-
-
-
-
 // =====================================
 // FACEBOOK ROUTES =====================
 // =====================================
@@ -153,7 +145,20 @@ router.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect : '/',
         failureRedirect : '/'
-}));
+    }));
+
+// =====================================
+// Google ROUTES =====================
+// =====================================
+// route for Google authentication and login
+router.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
+    // the callback after google has authenticated the user
+    router.get('/auth/google/callback',
+            passport.authenticate('google', {
+                    successRedirect : '/',
+                    failureRedirect : '/'
+    }));
 
 
 
