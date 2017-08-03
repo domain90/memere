@@ -1,0 +1,89 @@
+.navbar > .container-fluid {
+	background-color: #000;
+}
+.navbar-default .navbar-nav> li > a {
+	color: #fff;
+}
+.avatar-container {
+	width: 30px;
+	height: 30px;
+	padding: 10px 0 !important;
+}
+.user_avatar {
+	width: 30px;
+	background-color: #fff;
+	border-radius: 2px;
+}
+
+
+/* INDEX */
+.card {
+	width: 600px;
+	margin: 0 auto;
+}
+.card .cta {
+	overflow: hidden;
+}
+.card .cta .right-floated {
+	display: inline;
+	float: right;
+}
+.card .cta .left-floated {
+	display: inline;
+	float: left;
+}
+.content-img {
+	text-align: center;
+}
+.meta {
+	padding: 8px 0;
+}
+.meta-info p{
+	display: inline;
+}
+.btn-facebook {
+  background: #3B5998;
+  border-radius: 0;
+  color: #fff;
+}
+/*REGISTER*/
+.signup {
+	text-align: center;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.signup img{
+	width: 150px;
+}
+
+
+input[type=file] {
+	margin: 0 auto;
+}
+
+label {
+	float: left;
+}
+
+/* SHOW */
+.comment-user-container {
+	display: inline-block;
+	float: left;
+}
+.payload .user_avatar {
+	width: 50px;
+}
+.comment-input-area {
+	margin-left: 60px;
+}
+.comments {
+	width: 600px;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 12px;
+}
+.comment-box .payload textarea {
+	width: 100%;
+	resize: none;
+}

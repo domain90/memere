@@ -1,0 +1,29 @@
+<% include ./partials/header %>
+
+
+<div class="signup">
+	<h1>Sign up!</h1>
+	<form action="/register" method="POST" enctype="multipart/form-data">
+		<img src="/default_avatar.png" alt="">
+		<input type="file" name="avatar">
+	    <div class="form-group">
+			<label for="exampleInputEmail1">Username</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Password</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="password">
+		</div>
+	    <button>Submit</button>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+<% include ./partials/footer %>

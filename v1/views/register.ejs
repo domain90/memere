@@ -1,27 +1,43 @@
 <% include ./partials/header %>
 
-
-<div class="signup">
-	<h1>Sign up!</h1>
-	<form action="/register" method="POST" enctype="multipart/form-data">
-		<img src="/default_avatar.png" alt="">
-		<input type="file" name="avatar">
-	    <div class="form-group">
-			<label for="exampleInputEmail1">Username</label>
-		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="username">
-		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">Password</label>
-		    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Username" name="password">
-		</div>
-	    <button>Submit</button>
-	</form>
+<div class="container sign-container">
+	<div class="row"><h1 class="login">Sign Up!</h1></div>
+	<div class="row">
+		<form action="/register" method="POST" enctype="multipart/form-data">
+			
+				
+	    	<div class="auth">
+	    		<h3>Ingresa con:</h3>
+	    		<div class="form-group">
+					<a href="/auth/facebook" class="btn btn-primary btn-social"><span class="fa fa-facebook"></span> Facebook</a>
+				</div>
+	    	</div>
+	    	<hr>
+			<div class="accounts">
+				<h3>Crea tu cuenta</h3>
+				<div class="avatar-input">
+					<label for="file-upload" class="custom-file-upload">
+					    <img src="/default_avatar.png" alt="">
+					</label>
+					<input id="file-upload" type="file"/>
+				</div>
+				<div class="form-group">
+					<label for="">Username</label>
+				    <input type="text" name="username" class="form-control" placeholder="Username">
+				</div>
+				<div class="form-group">
+					<label for="">Password</label>
+				    <input type="password" name="password" class="form-control" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="">Email</label>
+				    <input type="email" name="password" class="form-control" placeholder="Email">
+				</div>
+	    	</div>
+		    <input type="submit" value="Login" class="btn-sign">		    
+		</form>
+	</div>
 </div>
-
-
-
-
-
 
 
 

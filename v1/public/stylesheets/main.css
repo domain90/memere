@@ -5,7 +5,11 @@
 	border: none;
 }
 .navbar > .container-fluid {
-	background-color: #f4d400;
+	background-color: #FDE74C;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 .navbar-default .navbar-nav> li > a {
 	color: #000;
@@ -215,6 +219,77 @@ label {
 /******************************************************/
 /*LOGIN*/
 /******************************************************/
+.login-container {
+	max-width: 450px;
+}
 .login {
+	text-align: left;
+}
+.btn-social {
+	width: 100%;
+}
+.btn-login {
+	width: 100%;
+	background-color: #9BC53D;
+	border: none;
+	height: 34px;
+	border-radius: 5px;
+	color: #000;
+	font-weight: 700;
+	font-size: 16px;
+}
+.btn-login:hover {
+	background-color: #ADDD44;
+}
+/******************************************************/
+/*SIGN UP*/
+/******************************************************/
+.sign-container {
+	max-width: 450px;
+}
+.sign {
+	text-align: left;
+}
+.btn-social {
+	width: 100%;
+}
+.btn-sign {
+	width: 100%;
+	background-color: #9BC53D;
+	border: none;
+	height: 30px;
+	border-radius: 5px;
+	color: #000;
+	font-weight: 700;
+	font-size: 16px;
+}
+.btn-sign:hover {
+	background-color: #ADDD44;
+}
+.sign-container img {
+	width: 150px;
+}
+.sign-container input[type="file"] {
+    display: none;
+}
+.avatar-input {
+	overflow: hidden;
 	text-align: center;
+}
+.custom-file-upload {
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin: 0;
+    width: 100%;
+}
+.btn-sign {
+	width: 100%;
+	background-color: #9BC53D;
+	border: none;
+	height: 34px;
+	border-radius: 5px;
+	color: #000;
+	font-weight: 700;
+	font-size: 16px;
 }
