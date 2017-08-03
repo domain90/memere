@@ -19,7 +19,7 @@ $(function() {
 	})
 
 	///////////////////////
-	/////COMMENT-REPLY/////
+	/////COMMENT-BOX/////
 	//////////////////////
 	var $payload = $(".payload").clone().addClass('reply');
 
@@ -46,25 +46,23 @@ $(function() {
 		// console.log(dataId);
 	})
 
-
 	///////////////////////
-	////////AJAX_REPLY/////
-	///////////////////////
-	$(document).on("click", "#commentSubmit", function(e){
+	/////COMMENT-POST/////
+	//////////////////////
+	$("#commentSubmit").on("click", function(e){
 
 		e.preventDefault();
 		e.stopPropagation();
 
 		var articleId 		 = $("article").data("id");
-		var commentContainer = $(".comment-container");
+		var commentContainer = $(".comments-container");
 		var commentRow 	 	 = $(this).parents(".row.comments-row");
 		var textVal          = $(this).parents('form').find("textarea#comment-text.comment-input").val();
-		var commentParent    = $(this).parents(".comment-payload").data("commentId");
 		// var divParent 		 = $(this).closest(".comment-payload");
 		// var commentId = divParent.data("commentId");
 		console.log(textVal);
 		$.ajax({
-			 url: "/gags/" + articleId + "/comment/" + commentParent + "/reply",
+			 url: "/gags/" + articleId,
 			 type: "POST",
 			 contentType: "application/json; charset=utf-8",
 			  // dataType: "json",
@@ -73,7 +71,60 @@ $(function() {
 			 	// console.log(JSON.parse(result));
 			 	// console.log(result.author.username);
 			 	console.log(result);
-			 	addComment(result).focus();
+			 	addComment(result);
+			 })
+			 .fail(function(err) {
+			 	console.log(err);
+			 })
+
+		var addComment = function (comment) {
+			var payload =  '<div class="row comments-row">' +
+								'<div class="comment-payload col-md-12" data-comment-id=' + comment._id + '>' +
+				              		'<div class="comment-user-container">' + 
+				                		'<img src=' + comment.author.avatar + ' class="user_avatar">' + 
+				              		'</div>' +
+				              		'<div class="comment-input-area">' + 
+						                '<div class="comment-meta">' + 
+						                  '<strong>' + comment.author.username + '</strong>' +
+						                  '<span class="gag-votes">' + comment.votes + ' Votes</span>' +
+						                '</div>' + 
+				                	'<p class="comment-main">' + comment.text + '</p>' + 
+					                '<div class="comment-cta">' + 
+					                  '<a href="" class="comment-reply-link">Reply</a>' +
+					                  '<a href=""><span class="glyphicon glyphicon-arrow-up"></a>' +
+					                  '<a href=""><span class="glyphicon glyphicon-arrow-down"></a>' +
+					                '</div>' +
+					              '</div>' + 
+					            '</div>' +
+					        '</div>';
+			commentContainer.append(payload).focus();			     
+		}
+	})
+
+	/////////////////////////
+	////////AJAX-REPLY///////
+	/////////////////////////
+	$(document).on("click", "#commentSubmit", function(e){
+
+		e.preventDefault();
+		e.stopPropagation();
+
+		var articleId 		 = $("article").data("id");
+		var commentRow 	 	 = $(this).parents(".row.comments-row");
+		var textVal          = $(this).parents('form').find("textarea#comment-text.comment-input").val();
+		var commentParent    = $(this).parents(".comment-payload").data("commentId");
+
+		console.log(textVal);
+		$.ajax({
+			 url: "/gags/" + articleId + "/comment/" + commentParent + "/reply",
+			 type: "POST",
+			 contentType: "application/json; charset=utf-8",
+
+			 data: JSON.stringify({ comment: {text: textVal } })
+			 }).done(function(result){
+			 	console.log(result);
+			 	addComment(result);
+			 	removeReply();
 			 })
 			 .fail(function(err) {
 			 	console.log(err);
@@ -81,8 +132,6 @@ $(function() {
 		
 
 		var addComment = function (comment) {
-			// var comments = JSON.parse(comment);
-			// var payload = "<div>" + comment.author.username + "</div>";
 			var payload =  '<div class="comment-payload col-md-12" data-comment-id=' + comment._id + '>' +
 			              		'<div class="comment-user-container">' + 
 			                		'<img src=' + comment.author.avatar + ' class="user_avatar">' + 
@@ -100,15 +149,11 @@ $(function() {
 				                '</div>' +
 				              '</div>' + 
 				            '</div>';
-			// var payload = $(".row.comments-row").clone();
-			commentRow.append(payload);			     
+			commentRow.append(payload).focus();			     
 		}
-
 		var removeReply = function() {
 			var replybox = $(".reply");
 			replybox.remove();
 		}
-		// console.log($("#comment-text").val())
-
 	})
 })

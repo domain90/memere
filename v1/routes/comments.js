@@ -19,7 +19,7 @@ var Reply   = require("../models/reply.js");
 
 router.post("/gags/:id", isLoggedIn, function(req, res) {
     //Lookup campground using ID
-    Gag.findById(req.params.id, function(err, gag){
+    Gag.findByIdAndUpdate(req.params.id, { $inc: {commentsNumber: 1} }).exec (function(err, gag){
         if(err){
            console.log(err);
         } else {

@@ -10,6 +10,7 @@
 	top: 0;
 	left: 0;
 	right: 0;
+	z-index: 1000;
 }
 .navbar-default .navbar-nav> li > a {
 	color: #000;
