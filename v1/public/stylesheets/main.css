@@ -52,9 +52,13 @@ li.dropdown {
 	padding-bottom: 8px;
 	border: none;
 	background-color: #3DB1E2;
+	border-radius: 5px;
 }
 a#upload:focus, a#upload:hover {
 	background-color: #3DB1E2;
+}
+.profile-mobile {
+	display: none !important;
 }
 /*MODAL*/
 .modal-body {
@@ -93,8 +97,12 @@ a#upload:focus, a#upload:hover {
 ul {
   list-style-type: none;
 }
-
-
+input {
+	min-height: 40px;
+}
+#inlineFormCustomSelect {
+	min-height: 40px;
+}
 /******************************************************/
 /* INDEX */
 /******************************************************/
@@ -319,7 +327,24 @@ label {
 }
 
 
-
-
+.profile-mobile {
+	display: block !important;
+}
+.profile-mobile-a img {
+	margin-right: 10px;
+}
+#username, .dropdown, .dropdown-menu {
+	display: none !important;
+}
+#upload {
+	width: 15%;
+	text-align: center;
+}
+.uploadli {
+	margin-left: 10px;
+}
+.body-half {
+	width: 100%;
+}
 
 }
